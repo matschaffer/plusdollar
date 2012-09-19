@@ -2,11 +2,26 @@
 <html>
   <head>
     <title>Git LOLcat</title>
+    <style type="text/css">
+      .hidden { display: none; }
+      .important { border: 1px solid #666; background: #ddf; padding: 10px; }
+    </style>
   </head>
   <body>
-  	<h2>First I was all</h2>
-  	<img src="http://httpcats.herokuapp.com/401"/>
-  	<h2>Then I was like</h2>
-  	<img src="http://httpcats.herokuapp.com/200"/>
+    <div class="hidden">
+      <h2>First I was all</h2>
+      <img src="http://httpcats.herokuapp.com/401"/>
+      <h2>Then I was like</h2>
+      <img src="http://httpcats.herokuapp.com/200"/>
+    </div>
+
+    <div class="important">
+      <p><a href="http://matschaffer.com">A link to by blog</a></p>
+      <p><a href="/pledges">A link to my resource</a></p>
+      <form action="/" method="post">
+        <label>Name <input type="text" name="name" /></label>
+        <input type="submit" />
+      </form>
+    </div>
   </body>
 </html>
