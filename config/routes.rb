@@ -1,5 +1,9 @@
 Plusdollar::Application.routes.draw do
-  resources :pledges
+  resources :projects
+
+  resources :users
+
+  resources :pledges, :users
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

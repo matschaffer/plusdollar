@@ -1,13 +1,6 @@
 class PledgesController < ApplicationController
-  # GET /pledges
-  # GET /pledges.json
   def index
     @pledges = Pledge.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @pledges }
-    end
   end
 
   # GET /pledges/1
