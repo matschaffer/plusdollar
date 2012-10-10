@@ -1,4 +1,6 @@
 Plusdollar::Application.routes.draw do
+  resources :pledges
+
   resources :projects
 
   resources :users

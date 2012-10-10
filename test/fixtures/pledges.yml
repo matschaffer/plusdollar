@@ -4,8 +4,10 @@ one:
   issue_url: MyString
   issue_title: MyString
   amount: 9.99
+  user: 
 
 two:
   issue_url: MyString
   issue_title: MyString
   amount: 9.99
+  user: 
