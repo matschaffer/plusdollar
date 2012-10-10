@@ -25,6 +25,8 @@ class PledgesController < ApplicationController
   # GET /pledges/new.json
   def new
     @pledge = Pledge.new
+    @users = User.all
+
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,6 +37,7 @@ class PledgesController < ApplicationController
   # GET /pledges/1/edit
   def edit
     @pledge = Pledge.find(params[:id])
+    @users = User.all
   end
 
   # POST /pledges

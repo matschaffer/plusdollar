@@ -1,4 +1,4 @@
-<%= form_for(@pledge) do |f| %>
+<%= form_for(@pledge, html: { class: 'form-horizontal' } ) do |f| %>
   <% if @pledge.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@pledge.errors.count, "error") %> prohibited this pledge from being saved:</h2>
@@ -11,23 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :issue_url %><br />
+<div class="control-group">
+  <%= f.label :issue_url,
+              class: 'control-label' %>
+  <div class="controls">
     <%= f.text_field :issue_url %>
   </div>
-  <div class="field">
-    <%= f.label :issue_title %><br />
+</div>
+
+<div class="control-group">
+  <%= f.label :issue_title,
+              class: 'control-label' %>
+  <div class="controls">
     <%= f.text_field :issue_title %>
   </div>
-  <div class="field">
-    <%= f.label :amount %><br />
+</div>
+<div class="control-group">
+  <%= f.label :amount,
+              class: 'control-label' %>
+  <div class="controls">
     <%= f.text_field :amount %>
   </div>
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
+</div>
+<div class="control-group">
+  <%= f.label :user_id,
+              class: 'control-label' %>
+  <div class="controls">
+    <%= f.collection_select :user_id, @users, :id, :name %>
+    <%= link_to "Create User", new_user_path, class: "btn btn-danger" %>
   </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+</div>
+<div class="form-actions">
+  <%= f.submit class: "btn btn-primary" %>
+</div>
 <% end %>
