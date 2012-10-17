@@ -1,4 +1,9 @@
 class PledgesController < ApplicationController
+  
+  before_filter do
+        @users = User.all
+  end
+  
   # GET /pledges
   # GET /pledges.json
   def index
@@ -44,6 +49,7 @@ class PledgesController < ApplicationController
   # POST /pledges.json
   def create
     @pledge = Pledge.new(params[:pledge])
+
 
     respond_to do |format|
       if @pledge.save

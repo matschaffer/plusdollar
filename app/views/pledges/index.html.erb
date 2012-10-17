@@ -14,9 +14,9 @@
 <% @pledges.each do |pledge| %>
   <tr>
     <td><%= pledge.issue_url %></td>
-    <td><%= pledge.issue_title %></td>
+    <td><%= pledge.title %></td>
     <td><%= pledge.amount %></td>
-    <td><%= pledge.user.name %></td>
+    <td><%= pledge.user_name %></td>
     <td><%= link_to 'Show', pledge %></td>
     <td><%= link_to 'Edit', edit_pledge_path(pledge) %></td>
     <td><%= link_to 'Destroy', pledge, method: :delete, data: { confirm: 'Are you sure?' } %></td>

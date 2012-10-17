@@ -11,15 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010023843) do
+ActiveRecord::Schema.define(:version => 20121017173616) do
 
   create_table "pledges", :force => true do |t|
     t.string   "issue_url"
-    t.string   "issue_title"
+    t.string   "title"
     t.decimal  "amount"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "pledges", ["user_id"], :name => "index_pledges_on_user_id"
@@ -38,5 +38,7 @@ ActiveRecord::Schema.define(:version => 20121010023843) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
 
 end

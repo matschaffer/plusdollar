@@ -1,0 +1,6 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+mat:
+  name: Mat
+  email: mat@schaffer.me
+  github_username: matschaffer
