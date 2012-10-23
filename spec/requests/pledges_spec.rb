@@ -2,9 +2,9 @@ require 'spec_helper'
 
 describe "Pledges" do
   describe "GET /pledges" do
-    
+
     fixtures :users
-    
+
     before do
       visit pledges_path
       click_link "New Pledge"
@@ -19,8 +19,6 @@ describe "Pledges" do
 
     it "can include a user", js: true do
       fill_in "Amount", with: "3.50"
-
-debugger;1
 
       select "Mat", from: "User"
       click_on "Create Pledge"
