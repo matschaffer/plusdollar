@@ -6,9 +6,11 @@ describe "Pledges" do
     fixtures :users
 
     before do
+      sign_in
       visit pledges_path
       click_link "New Pledge"
     end
+    
     it "works! (now write some real specs)", js: true do
       fill_in "Title", with: "A bug"
       click_button "Create Pledge"

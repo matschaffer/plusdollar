@@ -4,3 +4,5 @@ mat:
   name: Mat
   email: mat@schaffer.me
   github_username: matschaffer
+  # test1234
+  encrypted_password: $2a$10$YkbHqams6s07ZE78jRoDIulaiHGOqcgjppxFmSbrCHCB9xRgvAKc6
