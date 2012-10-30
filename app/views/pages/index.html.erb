@@ -1,0 +1,21 @@
+<img class="media-object pull-right" src="http://placekitten.com/400/200">
+
+<h1>Welcome to <span class="has-title" title="Plus Dollar">+:dollar:</span>!</h1>
+
+<p>
+  Got an issue on <%= link_to "Github", "http://github.com" %> you want fixed?
+</p>
+
+<p>
+  Post it here and put your money where your "+1" is.
+</p>
+
+<% if user_signed_in? %>
+<p>
+  <%= link_to "Make a pledge", new_pledge_path, class: "btn btn-primary" %> to get started!
+</p>
+<% else %>
+<p>
+  <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %> to get started!
+</p>
+<% end %>

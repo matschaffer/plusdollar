@@ -1,5 +1,6 @@
 class PledgesController < ApplicationController
-  
+   before_filter :authenticate_user!
+
   before_filter do
         @users = User.all
   end
