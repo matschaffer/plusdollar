@@ -5,10 +5,14 @@ class PledgesController < ApplicationController
         @users = User.all
   end
   
+  def pledges
+    current_user.pledges
+  end
+  
   # GET /pledges
   # GET /pledges.json
   def index
-    @pledges = Pledge.all
+    @pledges = pledges
 
     respond_to do |format|
       format.html # index.html.erb
@@ -30,7 +34,8 @@ class PledgesController < ApplicationController
   # GET /pledges/new
   # GET /pledges/new.json
   def new
-    @pledge = Pledge.new
+    @pledge = pledges.build
+    
     @users = User.all
 
 
@@ -42,14 +47,14 @@ class PledgesController < ApplicationController
 
   # GET /pledges/1/edit
   def edit
-    @pledge = Pledge.find(params[:id])
+    @pledge = pledges.find(params[:id])
     @users = User.all
   end
 
   # POST /pledges
   # POST /pledges.json
   def create
-    @pledge = Pledge.new(params[:pledge])
+    @pledge = pledges.new(params[:pledge])
 
 
     respond_to do |format|
@@ -66,23 +71,19 @@ class PledgesController < ApplicationController
   # PUT /pledges/1
   # PUT /pledges/1.json
   def update
-    @pledge = Pledge.find(params[:id])
+    @pledge = pledges.find(params[:id])
 
-    respond_to do |format|
       if @pledge.update_attributes(params[:pledge])
-        format.html { redirect_to @pledge, notice: 'Pledge was successfully updated.' }
-        format.json { head :no_content }
+        redirect_to @pledge, notice: 'Pledge was successfully updated.'
       else
-        format.html { render action: "edit" }
-        format.json { render json: @pledge.errors, status: :unprocessable_entity }
+        render action: "edit"
       end
-    end
   end
 
   # DELETE /pledges/1
   # DELETE /pledges/1.json
   def destroy
-    @pledge = Pledge.find(params[:id])
+    @pledge = pledges.find(params[:id])
     @pledge.destroy
 
     respond_to do |format|
