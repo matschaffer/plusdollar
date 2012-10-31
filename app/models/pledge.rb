@@ -6,6 +6,9 @@ class Pledge < ActiveRecord::Base
   
   validates :amount, presence: true
   
+  scope :pricey, where('amount > ?', 10)
+  scope :top_ten, order('amount desc').limit(10)
+  
   def user_name
     user.name if user
   end
