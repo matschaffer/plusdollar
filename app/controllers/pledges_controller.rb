@@ -57,15 +57,12 @@ class PledgesController < ApplicationController
     @pledge = pledges.new(params[:pledge])
 
 
-    respond_to do |format|
       if @pledge.save
-        format.html { redirect_to @pledge, notice: 'Pledge was successfully created.' }
-        format.json { render json: @pledge, status: :created, location: @pledge }
+        Notifications.new_pledge(@pledge).deliver
+        redirect_to @pledge, notice: 'Pledge was successfully created.'
       else
-        format.html { render action: "new" }
-        format.json { render json: @pledge.errors, status: :unprocessable_entity }
+        render action: "new"
       end
-    end
   end
 
   # PUT /pledges/1

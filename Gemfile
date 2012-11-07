@@ -10,6 +10,7 @@ group :development, :test do
   gem 'sqlite3'
   gem 'debugger'
   gem 'capybara'
+  gem 'letter_opener', github: 'ryanb/letter_opener'
 end
 group :production do
   gem 'pg'
@@ -17,6 +18,8 @@ end
 
 gem 'devise'
 gem 'rails_admin', github: 'sferik/rails_admin'
+
+gem 'newrelic_rpm'
 
 # Gems used only for assets and not required
 # in production environments by default.
