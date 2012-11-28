@@ -1,12 +1,14 @@
 require "spec_helper"
 
 describe Notifications do
+  fixtures :users, :pledges
   describe "new_pledge" do
-    let(:mail) { Notifications.new_pledge }
+    let(:pledge) { pledges(:bundler_speed) }
+    let(:mail) { Notifications.new_pledge(pledge) }
 
     it "renders the headers" do
       mail.subject.should eq("New pledge")
-      mail.to.should eq(["to@example.org"])
+      mail.to.should eq([pledge.user.email])
       mail.from.should eq(["from@example.com"])
     end
 

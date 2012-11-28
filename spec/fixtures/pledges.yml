@@ -1,13 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
-
-one:
-  issue_url: MyString
-  issue_title: MyString
-  amount: 9.99
-  user: 
-
-two:
-  issue_url: MyString
-  issue_title: MyString
-  amount: 9.99
-  user: 
+bundler_speed:
+  issue_url: http://github.com/carlhuda/bundler/issues/1
+  title: Bundler should be faster
+  amount: 5
+  user: mat
