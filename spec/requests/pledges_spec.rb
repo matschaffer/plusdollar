@@ -10,7 +10,7 @@ describe "Pledges" do
       visit pledges_path
       click_link "New Pledge"
     end
-    
+
     it "works! (now write some real specs)", js: true do
       fill_in "Title", with: "A bug"
       click_button "Create Pledge"
@@ -19,13 +19,13 @@ describe "Pledges" do
       page.should have_content(error_message)
     end
 
-    it "can include a user", js: true do
-      fill_in "Amount", with: "3.50"
-
-      select "Mat", from: "User"
-      click_on "Create Pledge"
-
-      page.should have_content "successful"
+    describe "Making a pledge", js: true do
+      it "expects a description and amount" do
+        fill_in "Title", with: "Spam"
+        fill_in "Amount", with: "4.50"
+        click_button "Create Pledge"
+        page.should have_content "Spam"
+      end
     end
   end
 end

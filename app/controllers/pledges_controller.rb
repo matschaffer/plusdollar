@@ -34,7 +34,7 @@ class PledgesController < ApplicationController
   # GET /pledges/new
   # GET /pledges/new.json
   def new
-    @pledge = pledges.build
+     @pledge = pledges.build
     
     @users = User.all
 
@@ -58,8 +58,12 @@ class PledgesController < ApplicationController
 
 
       if @pledge.save
-        Notifications.new_pledge(@pledge).deliver
-        redirect_to @pledge, notice: 'Pledge was successfully created.'
+        # Notifications.new_pledge(@pledge).deliver
+        if request.xhr?
+          render @pledge
+        else
+          redirect_to @pledge, notice: 'Pledge was successfully created.'
+        end
       else
         render action: "new"
       end

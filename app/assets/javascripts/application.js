@@ -15,5 +15,33 @@
 //= require_tree .
 
 $(function() {
-  debugger;
+  $("#new-pledge-link").click(function (e) {
+    e.preventDefault();
+    $('<div class="panel" />').
+      load(this.href).
+      insertAfter(this);
+    $(this).hide();
+  });
+  
+  function postHandler (result) {
+    var $result = $(result),
+        $err = $result.find("#error_explanation");
+    if ($err.length) {
+      $('#error_explanation').remove();
+      $err.insertBefore("#new_pledge");
+    } else {
+      $result.appendTo('table.pledges');
+      
+      $("#new-pledge-link").
+      show().
+      next('.panel').
+      remove();
+    }
+  }
+  
+  $('#new_pledge').live('submit', function (e) {
+    e.preventDefault();
+    var body = $(this).serialize();
+    $.post(this.action, body, postHandler);
+  });
 });
