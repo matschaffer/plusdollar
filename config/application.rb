@@ -58,9 +58,12 @@ module Plusdollar
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-    
+
     config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-    
+
+    config.stripe_private = '5xOfdd1UOdiO1rxUUie9fbCG4PtJ8rdC'
+    config.stripe_public = 'pk_IGC4q2h0DXHDY9EMyeDz0PbGxHP6E'
+
     config.generators do |g|
       g.controller_specs false
       g.view_specs false

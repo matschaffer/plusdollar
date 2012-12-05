@@ -4,11 +4,11 @@ class PledgesController < ApplicationController
   before_filter do
         @users = User.all
   end
-  
+
   def pledges
     current_user.pledges
   end
-  
+
   # GET /pledges
   # GET /pledges.json
   def index
@@ -35,7 +35,7 @@ class PledgesController < ApplicationController
   # GET /pledges/new.json
   def new
      @pledge = pledges.build
-    
+
     @users = User.all
 
 
@@ -56,17 +56,19 @@ class PledgesController < ApplicationController
   def create
     @pledge = pledges.new(params[:pledge])
 
+    if @pledge.save
+      Notifications.new_pledge(@pledge).deliver
 
-      if @pledge.save
-        # Notifications.new_pledge(@pledge).deliver
-        if request.xhr?
-          render @pledge
-        else
-          redirect_to @pledge, notice: 'Pledge was successfully created.'
-        end
+      @pledge.charge_card(params[:stripeToken])
+
+      if request.xhr?
+        render @pledge
       else
-        render action: "new"
+        redirect_to @pledge, notice: 'Pledge was successfully created.'
       end
+    else
+      render action: "new"
+    end
   end
 
   # PUT /pledges/1
