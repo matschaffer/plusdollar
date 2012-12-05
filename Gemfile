@@ -1,4 +1,5 @@
 source :rubygems
+source 'https://code.stripe.com'
 
 gem 'rails', '3.2.8'
 
@@ -12,9 +13,12 @@ group :development, :test do
   gem 'capybara'
   gem 'letter_opener', github: 'ryanb/letter_opener'
 end
+
 group :production do
   gem 'pg'
 end
+
+gem 'stripe'
 
 gem 'devise'
 gem 'rails_admin', github: 'sferik/rails_admin'
