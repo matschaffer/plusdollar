@@ -59,6 +59,8 @@ class PledgesController < ApplicationController
 
       if @pledge.save
         # Notifications.new_pledge(@pledge).deliver
+        @pledge.charge_card(params[:stripeToken])
+        
         if request.xhr?
           render @pledge
         else

@@ -66,5 +66,9 @@ module Plusdollar
       g.view_specs false
       g.helper_specs false
     end
+    
+    config.stripe_private = "5xOfdd1UOdiO1rxUUie9fbCG4PtJ8rdC"
+    config.stripe_public = "pk_IGC4q2h0DXHDY9EMyeDz0PbGxHP6E"
+    
   end
 end

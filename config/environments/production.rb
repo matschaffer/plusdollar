@@ -28,7 +28,7 @@ Plusdollar::Application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for nginx
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # See everything in the log (default is :info)
   # config.log_level = :debug
@@ -75,4 +75,8 @@ Plusdollar::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
   
   config.action_mailer.default_url_options = { :host => 'mat-plusdollar.herokuapp.com' }
+  
+  config.stripe_private = "k5nqEdVkbf8ZFv64tbc80AHezT6ifLSF"
+  config.stripe_public = "pk_k9Z9KurLX98Rt0mV9hObleFCs2V60"
+
 end

@@ -1,5 +1,9 @@
 source :rubygems
 
+source 'https://code.stripe.com'
+
+gem 'stripe'
+
 gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:

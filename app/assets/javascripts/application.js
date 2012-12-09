@@ -15,13 +15,13 @@
 //= require_tree .
 
 $(function() {
-  $("#new-pledge-link").click(function (e) {
-    e.preventDefault();
-    $('<div class="panel" />').
-      load(this.href).
-      insertAfter(this);
-    $(this).hide();
-  });
+  // $("#new-pledge-link").click(function (e) {
+    // e.preventDefault();
+    // $('<div class="panel" />').
+      // load(this.href).
+      // insertAfter(this);
+    // $(this).hide();
+  // });
   
   function postHandler (result) {
     var $result = $(result),
