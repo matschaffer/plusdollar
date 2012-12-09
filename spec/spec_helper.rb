@@ -29,11 +29,11 @@ RSpec.configure do |config|
   # automatically. This will be the default behavior in future versions of
   # rspec-rails.
   config.infer_base_class_for_anonymous_controllers = false
-  
-  def sign_in
+
+  def sign_in email='mat@schaffer.me'
     visit new_user_session_path
     fill_in 'Email', with: 'mat@schaffer.me'
     fill_in 'Password', with: 'test1234'
-    click_button 'Sign in'
+    click_on 'Sign in'
   end
 end

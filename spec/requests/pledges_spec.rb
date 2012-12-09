@@ -1,31 +1,58 @@
 require 'spec_helper'
 
-describe "Pledges" do
-  describe "GET /pledges" do
+describe "Pledges", js: true do
+  fixtures :users
 
-    fixtures :users
+  before do
+    sign_in
+    visit pledges_path
+    click_link "New Pledge"
+  end
 
-    before do
-      sign_in
-      visit pledges_path
-      click_link "New Pledge"
-    end
+  it "runs validations" do
+    fill_in "Title", with: "A bug"
+    click_button "Create Pledge"
 
-    it "works! (now write some real specs)", js: true do
-      fill_in "Title", with: "A bug"
-      click_button "Create Pledge"
+    error_message = "Amount can't be blank"
+    page.should have_content(error_message)
+  end
 
-      error_message = "Amount can't be blank"
-      page.should have_content(error_message)
-    end
+  def example_issue
+    "https://github.com/carlhuda/bundler/issues/2113"
+  end
 
-    describe "Making a pledge", js: true do
-      it "expects a description and amount" do
-        fill_in "Title", with: "Spam"
-        fill_in "Amount", with: "4.50"
-        click_button "Create Pledge"
-        page.should have_content "Spam"
-      end
-    end
+  def create_pledge
+    fill_in "Issue url", with: example_issue
+    fill_in "Amount", with: "5"
+    click_on "Create Pledge"
+  end
+
+  it "prompts for a credit card when a user has no card stored" do
+    create_pledge
+
+    fill_in "Card number", with: "4242 4242 4242 4242"
+    fill_in "Expiration", with: "12/99"
+    fill_in "Name on card", with: "Mat"
+    fill_in "Card code", with: "123"
+
+    click_on "Save card"
+  end
+
+  it "doesn't prompt for a credit card if the user has a stored card" do
+    click_on "Logout"
+    sign_in "mat+customer@schaffer.me"
+
+    visit pledges_path
+    click_link "New Pledge"
+    create_pledge
+
+    page.should have_content("Spam")
+  end
+
+  it "expects a description and amount" do
+    fill_in "Title", with: "Spam"
+    fill_in "Amount", with: "4.50"
+    click_button "Create Pledge"
+    page.should have_content "Spam"
   end
 end

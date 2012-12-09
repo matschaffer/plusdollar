@@ -6,3 +6,11 @@ mat:
   github_username: matschaffer
   # test1234
   encrypted_password: $2a$10$YkbHqams6s07ZE78jRoDIulaiHGOqcgjppxFmSbrCHCB9xRgvAKc6
+
+customer:
+  name: Mat
+  email: mat+customer@schaffer.me
+  github_username: matschaffer+customer
+  customer_id: fakecustomeridfromfixtures
+  # test1234
+  encrypted_password: $2a$10$YkbHqams6s07ZE78jRoDIulaiHGOqcgjppxFmSbrCHCB9xRgvAKc6
