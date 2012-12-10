@@ -22,7 +22,9 @@ body {
 }
 
 .navbar .gravatar {
-  margin-right: 10px;
+  margin-right: 6px;
 }
 
-
+.btn.logout {
+  margin: 0 0 0 10px;
+}
