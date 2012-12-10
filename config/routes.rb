@@ -1,4 +1,6 @@
 Plusdollar::Application.routes.draw do
+  get "profiles/show"
+
   get "pages/index"
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
@@ -8,6 +10,9 @@ Plusdollar::Application.routes.draw do
   resources :pledges
 
   resources :projects
+
+  # A singular resource for the current user's profile
+  resource :profile, only: [:show, :update]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

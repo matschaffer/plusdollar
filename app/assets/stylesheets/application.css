@@ -19,3 +19,7 @@ body {
 .has-title {
   text-decoration: underline;
 }
+
+.navbar .gravatar {
+  margin-right: 10px;
+}

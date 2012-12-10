@@ -2,13 +2,13 @@ class PledgesController < ApplicationController
    before_filter :authenticate_user!
 
   before_filter do
-        @users = User.all
+    @users = User.all
   end
-  
+
   def pledges
     current_user.pledges
   end
-  
+
   # GET /pledges
   # GET /pledges.json
   def index
@@ -35,7 +35,7 @@ class PledgesController < ApplicationController
   # GET /pledges/new.json
   def new
      @pledge = pledges.build
-    
+
     @users = User.all
 
 
@@ -58,9 +58,6 @@ class PledgesController < ApplicationController
 
 
       if @pledge.save
-        # Notifications.new_pledge(@pledge).deliver
-        @pledge.charge_card(params[:stripeToken])
-        
         if request.xhr?
           render @pledge
         else

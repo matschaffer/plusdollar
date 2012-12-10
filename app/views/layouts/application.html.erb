@@ -17,21 +17,24 @@
             <div class="nav-collapse collapse">
               <ul class="nav">
                 <li>
-                  <%= link_to "Home", root_path %>
+                <%= link_to "Home", root_path %>
                 </li>
                 <li>
-                  <%= link_to "Pledges", pledges_path %>
+                <%= link_to "Pledges", pledges_path %>
                 </li>
               </ul>
               <% if user_signed_in? %>
-              <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-inverse pull-right' %>
-              <% else %>
-              <%= form_for(User.new, url: session_path(:user), html: { class: 'navbar-form pull-right' }) do |f| %>
-              <%= f.email_field :email, placeholder: "Email" %>
+                <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn btn-inverse pull-right' %>
+                <%= link_to profile_path, class: 'btn btn-inverse pull-right' do %>
+                  <%= gravatar current_user %><%= current_user.name %>
+                <% end %>
+            <% else %>
+                <%= form_for(User.new, url: session_path(:user), html: { class: 'navbar-form pull-right' }) do |f| %>
+                <%= f.email_field :email, placeholder: "Email" %>
               <%= f.password_field :password, placeholder: "Password" %>
               <%= f.submit 'Sign in', class: 'btn btn-primary' %>
-              <% end %>
-              <% end %>
+            <% end %>
+            <% end %>
             </div><!--/.nav-collapse -->
           </div>
         </div>

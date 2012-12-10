@@ -3,6 +3,7 @@ source :rubygems
 source 'https://code.stripe.com'
 
 gem 'stripe'
+gem 'gravatar'
 
 gem 'rails', '3.2.8'
 
