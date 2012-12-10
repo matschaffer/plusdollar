@@ -11,8 +11,13 @@ Plusdollar::Application.routes.draw do
 
   resources :projects
 
-  # A singular resource for the current user's profile
-  resource :profile, only: [:show, :update]
+  # A singular resources for the current user's profile
+  # and payment info
+  resource :profile, only: [:show, :update] do
+    member do
+      resource :payment, only: [:show, :update, :destroy]
+    end
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
