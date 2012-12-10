@@ -1,22 +1,17 @@
-<%= form_for @user, url: profile_path, html: { class: 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :name, class: 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name %>
-    </div>
+<form action="" method="POST" id="payment-form">
+  <div class="form-row">
+    <label>Card number</label>
+    <input type="text" size="20" autocomplete="off" class="card-number"/>
   </div>
-
-  <% if @user.chargable? %>
-    <div class="alert alert-success">
-      Thanks for providing your payment info! If you'd like to stop all payment on any future pledges you may <%= link_to "remove your payment info", payment_path, method: :delete %>.
-    </div>
-  <% else %>
-    <div class="alert alert-error">
-      We don't have any payment info for you yet. You'll need to <%= link_to 'add payment info', payment_path %> before your pledges can get redeemed.
-    </div>
-  <% end %>
-
-  <div class="form-actions">
-    <%= f.submit %>
+  <div class="form-row">
+    <label>CVC</label>
+    <input type="text" size="4" autocomplete="off" class="card-cvc"/>
   </div>
-<% end %>
+  <div class="form-row">
+    <label>Expiration (MM/YYYY)</label>
+    <input type="text" size="2" class="card-expiry-month"/>
+    <span> / </span>
+    <input type="text" size="4" class="card-expiry-year"/>
+  </div>
+  <button type="submit" class="submit-button">Submit Payment</button>
+</form>
