@@ -1,0 +1,11 @@
+<div class="navbar-form pull-right">
+  <ul class="nav">
+    <li>
+      <%= link_to profile_path do %>
+        <%= gravatar current_user %><%= current_user.name %>
+      <% end %>
+    </li>
+  </ul>
+
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'btn' %>
+</div>
