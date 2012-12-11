@@ -2,6 +2,7 @@ Plusdollar::Application.routes.draw do
   get "profiles/show"
 
   get "pages/index"
+  get "pages/faq"
 
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
 
