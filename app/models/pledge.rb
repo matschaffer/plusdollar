@@ -27,7 +27,7 @@ class Pledge < ActiveRecord::Base
   end
 
   def github_issue user, project, id
-    Github.new.issues(user, project, id)
+    Github.new.issues.get(user, project, id)
   end
 
   def load_title_from_github

@@ -8,13 +8,8 @@ describe Pledge do
   end
 
   it "can fetch it's title from github" do
-    subject.issue_url = "https://github.com/matschaffer/knife-solo/issues/1"
-
-    mock_issue = double(:issue, title: "Upload cookbooks to secure location")
-    subject.should_receive(:github_issue).with('matschaffer', 'knife-solo', '1').and_return mock_issue
-
+    subject.issue_url = @example_url
     subject.load_title_from_github
-
-    subject.title.should == "Upload cookbooks to secure location"
+    subject.title.should == @example_title
   end
 end

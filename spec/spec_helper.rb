@@ -4,6 +4,9 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
+require 'webmock/rspec'
+WebMock.disable_net_connect!(:allow_localhost => true)
+
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
@@ -35,5 +38,12 @@ RSpec.configure do |config|
     fill_in 'Email', with: email
     fill_in 'Password', with: 'test1234'
     click_on 'Sign in'
+  end
+
+  config.before do
+    @example_api_url = "https://api.github.com/repos/matschaffer/knife-solo/issues/1"
+    @example_url = "https://github.com/matschaffer/knife-solo/issues/1"
+    @example_title = "Upload cookbooks to secure location"
+    stub_request(:get, @example_api_url).to_return(body: { title: @example_title}.to_json)
   end
 end
