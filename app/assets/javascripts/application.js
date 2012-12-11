@@ -15,4 +15,28 @@
 //= require_tree .
 
 $(function() {
+  function stripeResponseHandler(status, response) {
+    if (response.error) {
+        $(".payment-errors").show().find('.alert').text(response.error.message);
+        $(".submit-button").removeAttr("disabled");
+    } else {
+        var $form = $("#payment-form");
+        var token = response['id'];
+        $form.append("<input type='hidden' name='stripeToken' value='" + token + "'/>");
+        $form.get(0).submit();
+    }
+  }
+
+  $("#payment-form").submit(function (e) {
+    e.preventDefault();
+
+    $('.submit-button').attr("disabled", "disabled");
+
+    Stripe.createToken({
+      number: $('#card_number').val(),
+      exp_month: $('#card-expiry-month').val(),
+      exp_year: $('#card-expiry-year').val(),
+      cvc: $('#card_code').val()
+    }, stripeResponseHandler);
+  });
 });

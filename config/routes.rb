@@ -15,7 +15,7 @@ Plusdollar::Application.routes.draw do
   # and payment info
   resource :profile, only: [:show, :update] do
     member do
-      resource :payment, only: [:show, :update, :destroy]
+      resource :payment, only: [:show, :create, :destroy]
     end
   end
 
