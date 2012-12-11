@@ -40,10 +40,19 @@ RSpec.configure do |config|
     click_on 'Sign in'
   end
 
-  config.before do
+  def stub_github_issues_api
     @example_api_url = "https://api.github.com/repos/matschaffer/knife-solo/issues/1"
     @example_url = "https://github.com/matschaffer/knife-solo/issues/1"
     @example_title = "Upload cookbooks to secure location"
     stub_request(:get, @example_api_url).to_return(body: { title: @example_title}.to_json)
+  end
+
+  def stub_stripe_customer_api
+    @example_customer = {id: "cus_fromatest", active_card: "afakecard"}
+    stub_request(:post, "https://api.stripe.com/v1/customers").to_return(body: @example_customer.to_json)
+  end
+
+  config.before do
+    stub_github_issues_api
   end
 end

@@ -1,7 +1,11 @@
 require 'spec_helper'
 
 describe "A users profile", js: true do
+  fixtures :users
+
   it "links to payment info if we don't have any" do
+    stub_stripe_customer_api
+
     sign_in
     visit profile_path
     click_on "add payment info"
@@ -14,6 +18,8 @@ describe "A users profile", js: true do
     fill_in "Card code", with: "123"
 
     click_on "Save Card"
+
+    page.should have_content "remove your payment info"
   end
 
   it "links to remove payment info if we have it" do
