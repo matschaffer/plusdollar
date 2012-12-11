@@ -10,8 +10,6 @@ Plusdollar::Application.routes.draw do
 
   resources :pledges
 
-  resources :projects
-
   # A singular resources for the current user's profile
   # and payment info
   resource :profile, only: [:show, :update] do
