@@ -11,11 +11,12 @@ class ApplicationController < ActionController::Base
   end
 
   def redirect_back_or default
-    if stash = session[:stash]
-      session[:stash] = nil
-      redirect_to stash
-    else
-      redirect_to default
-    end
+    redirect_to stashed_or(default)
   end
+
+  def stashed_or default
+    session[:stash] || default
+  end
+  helper_method :stashed_or
+
 end

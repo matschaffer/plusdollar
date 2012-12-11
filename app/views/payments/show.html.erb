@@ -27,6 +27,6 @@
 
   <div class="form-actions">
     <%= submit_tag "Save Card", class: 'btn btn-primary submit-button' %>
-    <%= link_to "Cancel", profile_path, class: 'btn' %>
+    <%= link_to "Cancel", stashed_or(profile_path), class: 'btn' %>
   </div>
 <% end %>
