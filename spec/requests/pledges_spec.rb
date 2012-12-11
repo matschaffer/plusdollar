@@ -10,19 +10,15 @@ describe "Pledges", js: true do
   end
 
   it "runs validations" do
-    fill_in "Title", with: "A bug"
+    fill_in "Issue url", with: @example_url
     click_button "Create Pledge"
 
     error_message = "Amount can't be blank"
     page.should have_content(error_message)
   end
 
-  def example_issue
-    "https://github.com/carlhuda/bundler/issues/2113"
-  end
-
   def create_pledge
-    fill_in "Issue url", with: example_issue
+    fill_in "Issue url", with: @example_url
     fill_in "Amount", with: "5"
     click_on "Create Pledge"
   end
@@ -46,13 +42,6 @@ describe "Pledges", js: true do
     click_link "New Pledge"
     create_pledge
 
-    page.should have_content("Spam")
-  end
-
-  it "expects a description and amount" do
-    fill_in "Title", with: "Spam"
-    fill_in "Amount", with: "4.50"
-    click_button "Create Pledge"
-    page.should have_content "Spam"
+    page.should have_content(@example_title)
   end
 end

@@ -34,5 +34,6 @@ class Pledge < ActiveRecord::Base
     uri = URI.parse(issue_url)
     user, project, _, id = uri.path.split('/').drop(1)
     self.title = github_issue(user, project, id).title
+    save
   end
 end
