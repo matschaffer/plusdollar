@@ -56,16 +56,12 @@ class PledgesController < ApplicationController
   def create
     @pledge = pledges.new(params[:pledge])
 
-
-      if @pledge.save
-        if request.xhr?
-          render @pledge
-        else
-          redirect_to @pledge, notice: 'Pledge was successfully created.'
-        end
-      else
-        render action: "new"
-      end
+    if @pledge.save
+      @pledge.load_title_from_github
+      redirect_to @pledge, notice: 'Pledge was successfully created.'
+    else
+      render action: "new"
+    end
   end
 
   # PUT /pledges/1

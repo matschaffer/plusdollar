@@ -25,4 +25,14 @@ class Pledge < ActiveRecord::Base
       description: "Pledge for #{title}"
     )
   end
+
+  def github_issue user, project, id
+    Github.new.issues(user, project, id)
+  end
+
+  def load_title_from_github
+    uri = URI.parse(issue_url)
+    user, project, _, id = uri.path.split('/').drop(1)
+    self.title = github_issue(user, project, id).title
+  end
 end

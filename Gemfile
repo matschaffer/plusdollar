@@ -4,6 +4,7 @@ source 'https://code.stripe.com'
 
 gem 'stripe'
 gem 'gravatar'
+gem 'github_api'
 
 gem 'rails', '3.2.8'
 
