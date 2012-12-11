@@ -1,23 +1,35 @@
 bundler_speed:
-  issue_url: http://github.com/carlhuda/bundler/issues/1
+  issue_url: https://github.com/carlhuda/bundler/issues/bundler_speed
   title: Bundler should be faster
   amount: 5
   user: mat
 
 an_open_one:
-  issue_url: http://github.com/carlhuda/bundler/issues/2
+  issue_url: https://github.com/carlhuda/bundler/issues/an_open_one
   title: Some open issue
   amount: 5
   user: mat
 
-an_open_one:
-  issue_url: http://github.com/carlhuda/bundler/issues/3
+another_open_one:
+  issue_url: https://github.com/carlhuda/bundler/issues/another_open_one
   title: Some open issue
   amount: 5
   user: mat
+
+closed_on_github1:
+  issue_url: https://github.com/carlhuda/bundler/issues/closed_on_github
+  title: Some open issue
+  amount: 5
+  user: mat
+
+closed_on_github2:
+  issue_url: https://github.com/carlhuda/bundler/issues/closed_on_github
+  title: Some open issue
+  amount: 5
+  user: customer
 
 a_closed_one:
-  issue_url: http://github.com/carlhuda/bundler/issues/4
+  issue_url: https://github.com/carlhuda/bundler/issues/4
   title: Some closed issue
   amount: 5
   user: mat

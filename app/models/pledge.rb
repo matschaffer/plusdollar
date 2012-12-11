@@ -28,14 +28,24 @@ class Pledge < ActiveRecord::Base
     )
   end
 
-  def github_issue user, project, id
+  def github_issue
+    uri = URI.parse(issue_url)
+    user, project, _, id = uri.path.split('/').drop(1)
     Github.new.issues.get(user, project, id)
   end
 
+
   def load_title_from_github
-    uri = URI.parse(issue_url)
-    user, project, _, id = uri.path.split('/').drop(1)
-    self.title = github_issue(user, project, id).title
+    self.title = github_issue.title
     save
+  end
+
+  def load_state_from_github
+    self.closed = github_issue.state == "closed"
+    save
+  end
+
+  def resolve
+    self.closed = true
   end
 end

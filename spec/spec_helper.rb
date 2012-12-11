@@ -52,6 +52,18 @@ RSpec.configure do |config|
     stub_request(:post, "https://api.stripe.com/v1/customers").to_return(body: @example_customer.to_json)
   end
 
+  def api_url_for pledge
+    pledge.issue_url.gsub(/github\.com/, 'api.github.com/repos')
+  end
+
+  def stub_as_closed pledge
+    stub_request(:get, api_url_for(pledge)).to_return(body: {state: "closed"}.to_json)
+  end
+
+  def last_email
+    ActionMailer::Base.deliveries.last
+  end
+
   config.before do
     stub_github_issues_api
   end
