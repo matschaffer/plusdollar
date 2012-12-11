@@ -58,7 +58,7 @@ class PledgesController < ApplicationController
 
     if @pledge.save
       @pledge.load_title_from_github
-      redirect_to @pledge, notice: 'Pledge was successfully created.'
+      redirect_to pledges_path, notice: 'Pledge was successfully created'
     else
       render action: "new"
     end

@@ -11,9 +11,7 @@
       Thanks for providing your payment info! If you'd like to stop all payment on any future pledges you may <%= link_to "remove your payment info", payment_path, method: :delete %>.
     </div>
   <% else %>
-    <div class="alert alert-error">
-      We don't have any payment info for you yet. You'll need to <%= link_to 'add payment info', payment_path %> before your pledges can get redeemed.
-    </div>
+    <%= render 'payment_alert' %>
   <% end %>
 
   <div class="form-actions">

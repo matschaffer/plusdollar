@@ -26,12 +26,11 @@ describe "Pledges", js: true do
   it "prompts for a credit card when a user has no card stored" do
     create_pledge
 
-    fill_in "Card number", with: "4242 4242 4242 4242"
-    fill_in "Expiration", with: "12/99"
-    fill_in "Name on card", with: "Mat"
-    fill_in "Card code", with: "123"
+    click_on "add payment info"
 
-    click_on "Save card"
+    page.should have_content "Card number"
+
+    click_on "Save Card"
   end
 
   it "doesn't prompt for a credit card if the user has a stored card" do

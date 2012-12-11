@@ -1,3 +1,5 @@
+<%= render 'payment_alert' unless current_user.chargable? %>
+
 <h1>Listing pledges</h1>
 
 <table class="pledges">
