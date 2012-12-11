@@ -11,16 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209194835) do
+ActiveRecord::Schema.define(:version => 20121211132558) do
 
   create_table "pledges", :force => true do |t|
     t.string   "issue_url"
     t.string   "title"
     t.decimal  "amount"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
     t.integer  "project_id"
+    t.boolean  "closed",     :default => false
+    t.string   "awarded_to"
+    t.datetime "claimed_at"
   end
 
   add_index "pledges", ["user_id"], :name => "index_pledges_on_user_id"

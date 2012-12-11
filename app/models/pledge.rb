@@ -9,6 +9,8 @@ class Pledge < ActiveRecord::Base
   scope :pricey, where('amount > ?', 10)
   scope :top_ten, order('amount desc').limit(10)
 
+  scope :unresolved, where(closed: false)
+
   def user_name
     user.name if user
   end
